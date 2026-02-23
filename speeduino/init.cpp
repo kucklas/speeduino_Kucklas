@@ -2999,7 +2999,7 @@ void initialiseTriggers(void)
     triggerInterrupt3 = pinTrigger3;
   #endif
 
-  pinMode(pinTrigger, INPUT);
+  pinMode(pinTrigger, INPUT_PULLUP);
   pinMode(pinTrigger2, INPUT);
   pinMode(pinTrigger3, INPUT);
 
