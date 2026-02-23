@@ -2,7 +2,6 @@ name: Build Firmware
 
 on:
   push:
-    branches: [ master, '*-fixes' ]
   pull_request:
     branches: [ master ]
   workflow_dispatch:
@@ -39,6 +38,12 @@ jobs:
 
     - name: Build test atmel
       run: platformio run -e megaatmega2560 -e megaatmega2560-6-3 -e megaatmega2560-8-1
+
+    - name: Upload firmware artifact (megaatmega2560)
+      uses: actions/upload-artifact@v4
+      with:
+        name: firmware-megaatmega2560-hex-${{ github.sha }}
+        path: .pio/build/megaatmega2560/firmware.hex
 
     - name: Build test teensy
       run: platformio run -e teensy35 -e teensy36 -e teensy41
